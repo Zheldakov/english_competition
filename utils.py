@@ -32,7 +32,11 @@ def base_program(dict_words, name):
             print(f"Не верно, {word_eng.title()} — это {word_rus}.")
             answer[word_eng] = False
         answer_json = json.dumps(answer)
-    with open(os.path.normpath(os.path.abspath(f"answer_{name}_{date.today()}_{datetime.now().strftime("%H-%M-%S")}.json")), "wt", encoding="utf-8") as file:
+    try:    
+        os.makedirs("answers")
+    except FileExistsError:
+        pass
+    with open(os.path.normpath(os.path.abspath(f"answers//answer_{name}_{date.today()}_{datetime.now().strftime("%H-%M-%S")}.json")), "wt", encoding="utf-8") as file:
         file.write(answer_json)
     return answer
 
