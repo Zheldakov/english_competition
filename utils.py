@@ -6,7 +6,7 @@ from datetime import datetime, date
 def get_user_level(level):
     '''Функция принемает уровень сложности, и возвращает словарь слов в соответствующей сложности'''
 
-    with open(os.path.normpath(os.path.abspath("questions.json")), "rt", encoding="utf-8") as file:
+    with open(os.path.normpath(os.path.abspath("questions/questions.json")), "rt", encoding="utf-8") as file:
         data_json = json.loads(file.read())
         words_easy = data_json[0]["questions"][0]
         words_medium = data_json[0]["questions"][1]
@@ -40,7 +40,7 @@ def base_program(dict_words, name):
 def get_result(answer):
     '''Функция получает словарь с ответсами, и возвращает результат прохождения викторины'''
     count = 0
-    with open(os.path.normpath(os.path.abspath("questions.json")), "rt", encoding="utf-8") as file:
+    with open(os.path.normpath(os.path.abspath("questions/questions.json")), "rt", encoding="utf-8") as file:
         data_json = json.loads(file.read())
         levels = data_json[1]["levels"]
 
